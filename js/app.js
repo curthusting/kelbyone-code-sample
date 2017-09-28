@@ -13,7 +13,7 @@ function closeSidebar() {
 }
 
 var KelbyOne = KelbyOne || {
-  host: 'http://kelbynew.staging.wpengine.com',
+  host: 'https://kelbynew.staging.wpengine.com',
   namespace: 'wp-json/ko/v2',
   data: {
     categories: [],
