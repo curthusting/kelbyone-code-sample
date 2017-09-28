@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="https://u5l0g2luan7323c4w1lhl6l2-wpengine.netdna-ssl.com/wp-content/themes/ko/assets/images/favicon/favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,700,400italic' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+
+  <title>KelbyOne API Code Sample</title>
+  <link rel="manifest" href="/manifest.json">
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#4788d8">
+</head>
+
+<body>
+  <header class="primary">
+    <div class="inner">
+      <div class="toggle" onclick="toggleSidenav()">
+        <i class="material-icons">menu</i>
+      </div>
+      <div class="title"><span class="inner">KelbyOne API Sample</span></div>
+      <div class="toggle right" onclick="removeCookie('_ko-session_token')">
+        <i class="material-icons">exit_to_app</i>
+      </div>
+    </div>
+  </header>
+
+  <section class="main" id="list">
+  </section>
+
+  <section class="side-nav" id="nav">
+  </section>
+
+  <section class="side-panel" id="item">
+  </section>
+
+  <div class="overlay">
+    <form id="login" method="post" action="http://kelbynew.staging.wpengine.com/api/v1/login">
+      <img src="/images/kelbyone-logo.png" alt="">
+      <label for="username">Username</label>
+      <input name="username" type="text" value="FETest" placeholder="username" autocomplete="off">
+      <label for="password">Password</label>
+      <input name="password" type="password" value="FETest!@#" placeholder="password" autocomplete="off">
+      <input type="submit" value="Submit" role="button">
+    </form>
+  </div>
+  <p id="error"></p>
+
+  <script id="category-list-template" type="text/x-handlebars-template">
+
+    <div class="inner">
+      <div class="block-title">Filter by Category</div>
+      {{#each categories}}
+      <div class="item">
+        <a href="#category/{{id}}">
+          <h3 class="subhead">{{display_name}}</h3>
+        </a>
+      </div>
+      {{/each}}
+    </div>
+  </script>
+
+  <script id="course-list-template" type="text/x-handlebars-template">
+
+    <div class="inner">
+      <h2 class="block-title">Courses</h2>
+      <div class="grid">
+        {{#each courses}}
+        <div class="item">
+          <a href="#course/{{id}}"><img class="thumb" src="{{thumbnail_url}}"></a>
+          <div class="details">
+            <a href="#course/{{id}}">
+              <h2 class="subhead">{{title}}</h2>
+            </a>
+            <p class="caption">{{instructor.display_name}} | {{published_date}}</p>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </script>
+  <script id="course-detail-template" type="text/x-handlebars-template">
+    <div class="inner">
+      <span class="close" onclick="closeSidebar()"><i class="material-icons">close</i></span>
+      <h1 class="block-title">{{course.title}}</h1>
+      <img src="{{course.thumbnail_url}}" alt="">
+      <div class="details">
+        <p class="description">{{course.instructor.display_name}} | {{course.published_date}}</p>
+        {{{course.content}}}
+        <div class="block-title">Lessons</div>
+        <ol>
+          {{#each course.lessons}}
+          <li>
+            <h2 class="subhead">{{title}}</h2>
+          </li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+  </script>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<script src="js/app.js"></script>
+<!-- <script src="js/app.service-worker.js"></script> -->
+
+</html>
