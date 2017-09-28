@@ -46,9 +46,6 @@ var KelbyOne = KelbyOne || {
     var $template = $("#course-detail-template").html();
     return this.load('course', url, $template, '#item');
   },
-  closeCourse: function () {
-    window.history.back();
-  },
   authorize: function (data, resource) {
     var url = KelbyOne.host + '/' + KelbyOne.namespace + '/users/' + resource;
 
@@ -198,10 +195,10 @@ function toggleSidenav() {
   $('body').toggleClass("show-side-nav");
 }
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('./service-worker.js')
-    .then(function () {
-      console.log('Service Worker Registered');
-    });
-}
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker
+//     .register('./service-worker.js')
+//     .then(function () {
+//       console.log('Service Worker Registered');
+//     });
+// }
