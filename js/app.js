@@ -29,6 +29,9 @@ var KelbyOne = KelbyOne || {
     return this.load('categories', url, $template, '#nav');
   },
   retrieveCourses: function (category = null) {
+    if (960 > window.innerWidth) {
+      $('body').removeClass("show-side-nav");
+    }
     $('body').removeClass("show-side-panel");
     var url = KelbyOne.host + '/' + KelbyOne.namespace + '/courses?per_page=12';
     if (category) {
@@ -40,6 +43,9 @@ var KelbyOne = KelbyOne || {
   viewCourse: function (course = null) {
     if (!course) {
       return;
+    }
+    if (960 > window.innerWidth) {
+      $('body').removeClass("show-side-nav");
     }
     $('body').addClass("show-side-panel");
     var url = KelbyOne.host + '/' + KelbyOne.namespace + '/courses/' + course;
