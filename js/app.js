@@ -194,7 +194,6 @@ function getCookie(key) {
 
 function removeCookie(key) {
   KelbyOne.showLoginForm();
-  console.log(key, $.cookie(key));
   if ($.cookie(key) === undefined) {
     return false;
   }
