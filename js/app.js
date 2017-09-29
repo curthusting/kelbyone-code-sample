@@ -182,7 +182,7 @@ function getCookie(key) {
 
 function removeCookie(key) {
   $.removeCookie(key, {
-    path: '/'
+    path: '/kelbyone-code-sample'
   });
   return KelbyOne.showLoginForm();
 }
