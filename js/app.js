@@ -68,6 +68,8 @@ var KelbyOne = KelbyOne || {
       success: function (response) {
         setCookie('_ko-session_token', response.data.token);
         KelbyOne.loadDynamic();
+        KelbyOne.retrieveCategories();
+
         return KelbyOne.hideLoginForm();
       },
       error: function (response) {
