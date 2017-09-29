@@ -81,6 +81,7 @@ var KelbyOne = KelbyOne || {
   },
   bindLoginSubmit: function () {
     var self = this;
+    
     $('#login').on('submit', function (ev) {
       ev.preventDefault();
       var data = normalizeFormData($('#login').serializeArray());
@@ -90,7 +91,6 @@ var KelbyOne = KelbyOne || {
   showLoginForm: function () {
     history.pushState("", document.title, window.location.pathname + window.location.search);
     $('body').addClass('show-overlay');
-    this.bindLoginSubmit();
   },
   hideLoginForm: function () {
     $('body').removeClass('show-overlay');
@@ -163,6 +163,7 @@ var KelbyOne = KelbyOne || {
   }
 }
 
+KelbyOne.bindLoginSubmit();
 KelbyOne.retrieveCategories();
 window.onload = KelbyOne.loadDynamic;
 window.onhashchange = KelbyOne.loadDynamic;
