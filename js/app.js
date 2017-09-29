@@ -96,6 +96,9 @@ var KelbyOne = KelbyOne || {
     $('body').removeClass('show-overlay');
   },
   load: function (resource, url, $template, target) {
+    if (!KelbyOne.hasAuth()) {
+      return KelbyOne.showLoginForm();
+    }
     var self = this;
 
     $.ajax({
@@ -188,11 +191,12 @@ function getCookie(key) {
 
 function removeCookie(key) {
   KelbyOne.showLoginForm();
+  console.log(key, $.cookie(key));
   if ($.cookie(key) === undefined) {
     return false;
   }
   // Must not alter options, thus extending a fresh object...
-  $.cookie(key, '', $.extend({}, options, {
+  $.cookie(key, '', $.extend({}, {}, {
     expires: -1
   }));
   return !$.cookie(key);
